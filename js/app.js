@@ -28,10 +28,6 @@ function checkInputLetter() {
     let row = document.querySelectorAll('.row')[6 - countOfRounds];
     let inputLetter = '';
     let guess = Array.from(randomWord);
-    if (nextBox <= 5) {
-        checkB.id = 'disabled';
-        checkB.removeEventListener('click', checkInputLetter);
-    }
 
     for (let i = 0; i < inputCharacter.length; i++) {
         inputLetter += inputCharacter[i];
@@ -68,6 +64,8 @@ function checkInputLetter() {
         countOfRounds--;
         inputCharacter = [];
         nextBox = 0;
+        checkB.id = 'disabled';
+        checkB.removeEventListener('click', checkInputLetter);
         if (countOfRounds === 0) {
             alert('Game over!');
         }
@@ -87,6 +85,8 @@ function deleteCharacter() {
 }
 
 function resetGame() {
+    checkB.id = 'disabled';
+    checkB.removeEventListener('click', checkInputLetter);
     let box = document.querySelectorAll('.box');
     for (let i = 0; i < box.length; i++) {
         box[i].textContent = '';
